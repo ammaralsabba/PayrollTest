@@ -28,7 +28,7 @@ class hr_release(models.Model):
     employee_id = fields.Many2one('hr.employee', string='Employee', readonly=True, track_visibility='onchange', states={'new': [('readonly', False)]}, required=True)
     reason = fields.Many2one('hr.release.reason', string='Reason', readonly=True, track_visibility='onchange', states={'new': [('readonly', False)]}, required=True)
     note = fields.Text(string='Note', readonly=True, states={'new': [('readonly', False)]})
-    date = fields.Date(string='Date', default=datetime.today(), readonly=True, track_visibility='onchange', copy=False, states={'new': [('readonly', False)]}, required=True)
+    date = fields.Char(string='Date', default=datetime.today(), readonly=True, track_visibility='onchange', copy=False, states={'new': [('readonly', False)]}, required=True)
     state = fields.Selection([('new', 'New'), ('approve', 'Approved'), ('reject', 'Rejected'), ('cancel','Cancelled')], string='State', default='new', readonly=True, track_visibility='onchange', copy=False)
     company_id = fields.Many2one('res.company', related='employee_id.company_id', string='Company', readonly=True)
 
