@@ -60,7 +60,7 @@ class hr_warning(models.Model):
     name = fields.Char(string='Description', readonly=True, track_visibility='onchange', states={'new': [('readonly', False)]}, required=True)
     type = fields.Many2one('hr.warning.type', string='Type', readonly=True, track_visibility='onchange', states={'new': [('readonly', False)]}, required=True)
     employee_id = fields.Many2one('hr.employee', string='Employee', readonly=True, track_visibility='onchange', states={'new': [('readonly', False)]}, required=True)
-    date = fields.Date(string='Date', default=datetime.today(), readonly=True, track_visibility='onchange', copy=False, states={'new': [('readonly', False)]}, required=True)
+    date = fields.Char(string='Date', default=datetime.today(), readonly=True, track_visibility='onchange', copy=False, states={'new': [('readonly', False)]}, required=True)
     amount = fields.Float(string='Amount', digits=dp.get_precision('Payroll'), readonly=True, track_visibility='onchange', copy=False)
     paid = fields.Float(string='Paid', digits=dp.get_precision('Payroll'), readonly=True, track_visibility='onchange', copy=False)
     balance = fields.Float(compute='_balance', string='Amount Due', digits=dp.get_precision('Payroll'), readonly=True, copy=False)
