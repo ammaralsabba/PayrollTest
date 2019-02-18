@@ -98,7 +98,7 @@ class hr_loan(models.Model):
     def _create_payment_entry(self, amount):
         aml_obj = self.env['account.move.line'].with_context(check_move_validity=False)
 
-        debit, credit, amount_currency, currency_id = aml_obj.with_context(date=self.date).compute_amount_fields(amount, self.company_id.currency_id, self.company_id.currency_id, False)
+        debit, credit, amount_currency, currency_id = aml_obj.with_context(date=self.date).compute_amount_fields(amount, self.company_id.currency_id, self.company_id.currency_id)
 
         move = self.env['account.move'].create(self._get_move_vals())
 
